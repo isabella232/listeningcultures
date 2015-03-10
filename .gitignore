@@ -48,3 +48,5 @@ data/copy.xlsx
 www/assets/*
 !www/assets/assetsignore
 www/live-data/*
+data/spectrograms/*
+!data/spectrograms/.placeholder
