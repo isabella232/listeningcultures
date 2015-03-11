@@ -4,43 +4,14 @@
 Commands that update or process the application data.
 """
 from datetime import datetime
-from glob import glob
 import json
-import os
-import wave
 
 from fabric.api import task
 from facebook import GraphAPI
-import pylab
 from twitter import Twitter, OAuth
 
 import app_config
 import copytext
-
-@task
-def analyze_whales():
-    for path in glob('www/assets/whales*.wav'):
-        graph_spectrogram(path)
-
-def graph_spectrogram(wav_file):
-    # strip path
-    filename = os.path.split(wav_file)[1]
-    slug = filename.split('.')[0]
-
-    sound_info, frame_rate = get_wav_info(wav_file)
-    pylab.figure(num=None, figsize=(19, 12))
-    pylab.subplot(111)
-    pylab.title('spectrogram of %r' % filename)
-    data = pylab.specgram(sound_info, Fs=frame_rate)
-    pylab.savefig('data/spectrograms/%s.png' % slug)
-
-def get_wav_info(wav_file):
-    wav = wave.open(wav_file, 'r')
-    frames = wav.readframes(-1)
-    sound_info = pylab.fromstring(frames, 'Int16')
-    frame_rate = wav.getframerate()
-    wav.close()
-    return sound_info, frame_rate
 
 @task(default=True)
 def update():
