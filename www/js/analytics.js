@@ -3,8 +3,8 @@
  */
 
 var _gaq = _gaq || [];
-var _sf_async_config = {};
 var _comscore = _comscore || [];
+var _sf_async_config={};
 
 var ANALYTICS = (function () {
 
@@ -19,7 +19,7 @@ var ANALYTICS = (function () {
         _gaq.push(['_setAccount', APP_CONFIG.GOOGLE_ANALYTICS.ACCOUNT_ID]);
         _gaq.push(['_setDomainName', APP_CONFIG.GOOGLE_ANALYTICS.DOMAIN]);
         //_gaq.push(['_setCustomVar', 1, 'BC', '', 3]);
-        _gaq.push(['_setCustomVar', 2, 'Topics', APP_CONFIG.GOOGLE_ANALYTICS.TOPICS, 3]);
+        _gaq.push(['_setCustomVar', 2, 'Topics', APP_CONFIG.GOOGLE_ANALYTICS_TOPICS, 3]);
         //_gaq.push(['_setCustomVar', 3, 'Program ID', '', 3]);
         //_gaq.push(['_setCustomVar', 3, 'Localization', '', 1]);
         _gaq.push(['_setCustomVar', 4, 'OrgID', '1', 3]);
@@ -252,7 +252,7 @@ var ANALYTICS = (function () {
         'completeFiftyPercent': completeFiftyPercent,
         'completeSeventyFivePercent': completeSeventyFivePercent,
         'completeOneHundredPercent': completeOneHundredPercent,
-        'exitSlide': exitSlide
+        'exitSlide': exitSlide,
     };
 }());
 

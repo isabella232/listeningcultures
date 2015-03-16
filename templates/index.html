@@ -1,56 +1,44 @@
 {% extends '_base.html' %}
 
 {% block header_content %}
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1>{{ COPY.content.project_name|smarty }}</h1>
-                <h2>{{ COPY.content.lorem_ipsum|smarty }}</h2>
-            </div>
-        </div>
-    </div>
-</header>
 {% endblock %}
 
 
 {% block content %}
-<h1>{{ COPY.content.project_name }}</h1>
 
-<div id="story-meta">
-    <p class="byline">by <span>{{ COPY.content.byline }}</span></p>
-    <p class="dateblock">
-        <span class="date">{{ COPY.content.pubdate }}</span>
-        <span class="time"> {{ COPY.content.pubtime }}</span>
-    </p>
+<div class="section">
+    {% for row in COPY.content %}
+        {% include "slides/%s.html" % row.template ignore missing %}
+    {% endfor %}
 </div>
 
-<a class="comment-button comment-button-bubble comment-drawer-toggle" href="javascript:">
-    <span class="comment-count"></span>
-</a>
-
-<a class="comment-button comment-button-article comment-drawer-toggle" data-toggle="modal" data-backdrop="static" data-target="#share-modal">
-    <span class="comment-count"></span>
-    <span class="comment-label">Share / Discuss</span>
-</a>
-
-<h2>Example COPY list</h2>
-<dl>
-    {% for row in COPY.example_list %}
-    <dt>{{ row.term }}</dt><dd>{{ row.definition }}</dd>
-    {% endfor %}
-</dl>
-
-<h2>JST example</h2>
-<p id="template-example"></p>
-{% endblock %}
-
-
-{% block wide_content %}
-<div class="row">
-    <div class="col-md-12">
-        <h2>{{ COPY.content.footer_title }}</h2>
-        <p>{{ COPY.content.lorem_ipsum }}</p>
+<div class="player-wrapper">
+    <div id="player" class="jp-jplayer"></div>
+    <div id="jp_container_1" class="jp-audio">
+        <div class="jp-type-single">
+            <div class="jp-gui jp-interface">
+                <div class="jp-controls-holder">
+                    <div class="jp-controls controls">
+                        <a href="#" class="play player-button" tabindex="1" title="play"><span class="fa fa-play"></span></a>
+                        <a href="#" class="pause player-button" tabindex="1" style="display: none;" title="pause"><span class="fa fa-pause"></span></a>
+                        <a href="#" class="replay player-button" tabindex="1" style="display: none;" title="pause"><span class="fa fa-undo"></span></a>
+                    </div>
+                </div>
+                <div class="jp-progress-container">
+                    <div class="player-progress jp-progress">
+                        <div class="jp-seek-bar">
+                            <div class="jp-play-bar bar"></div>
+                        </div>
+                    </div>
+                    <div class="playback-info">
+                        <div class="current-time"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+{% endblock %}
+
+{% block wide_content %}
 {% endblock %}
