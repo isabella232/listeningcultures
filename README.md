@@ -227,7 +227,7 @@ This solution will download the uncached version of the document, unlike those m
 
 Make sure you're authenticated, then call `oauth.get_document(key, file_path)`.
 
-Here's an example of what you might do:
+Here's an example of what you could do:
 
 ```
 from copytext import Copy
